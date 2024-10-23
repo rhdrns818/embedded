@@ -28,14 +28,12 @@ L_Motor.start(0)
 R_Motor = GPIO.PWM(PWMB,500)
 R_Motor.start(0)
 
-pre_swValues = [0,0,0,0]
-
 try:
   while True:
     time.sleep(0.05) #디바운싱 추가
     swValues = [GPIO.input(SWS[0]),GPIO.input(SWS[1]),GPIO.input(SWS[2]),GPIO.input(SWS[3])]
 
-    if pre_swValues[0] == 0 and swValues[0] == 1:
+    if swValues[0] == 1:
       print("SW1")
       GPIO.output(AIN1,0)
       GPIO.output(AIN2,1)
@@ -43,23 +41,19 @@ try:
       GPIO.output(BIN2,1)
       L_Motor.ChangeDutyCycle(50)
       R_Motor.ChangeDutyCycle(50)
-      time.sleep(1.0)
-    elif pre_swValues[1] == 0 and swValues[1] == 1:
-      time.sleep(0.05)
+    elif swValues[1] == 1:
       print("SW2")
       GPIO.output(AIN1,0)
       GPIO.output(AIN2,1)
       L_Motor.ChangeDutyCycle(50)
       R_Motor.ChangeDutyCycle(0)
-      time.sleep(1.0)
-    elif pre_swValues[2] == 0 and swValues[2] == 1:
+    elif swValues[2] == 1:
       print("SW3")
       GPIO.output(AIN1,1)
       GPIO.output(AIN2,0)
       L_Motor.ChangeDutyCycle(50)
       R_Motor.ChangeDutyCycle(0)
-      time.sleep(1.0)
-    elif pre_swValues[3] == 0 and swValues[3] == 1:
+    elif swValues[3] == 1:
       print("SW4")
       GPIO.output(AIN1,1)
       GPIO.output(AIN2,0)
@@ -67,9 +61,9 @@ try:
       GPIO.output(BIN2,0)
       L_Motor.ChangeDutyCycle(50)
       R_Motor.ChangeDutyCycle(50)
-      time.sleep(1.0)
-
-    pre_swValues = swValues
+    else:
+      L_Motor.ChangeDutyCycle(0)
+      R_Motor.ChangeDutyCycle(0)
 
 except KeyboardInterrupt:
   pass
