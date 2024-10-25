@@ -38,7 +38,7 @@ try:
       time.sleep(1.0)
     elif sw4Value == 1:
       p.start(50)
-      p.ChangeFrequency(sounds[32])
+      p.ChangeFrequency(sounds[3])
       time.sleep(1.0)
     
     p.start(0)

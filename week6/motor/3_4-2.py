@@ -22,7 +22,6 @@ GPIO.setup(SWS[1],GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(SWS[2],GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(SWS[3],GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 
-
 L_Motor = GPIO.PWM(PWMA,500)
 L_Motor.start(0)
 R_Motor = GPIO.PWM(PWMB,500)
@@ -49,10 +48,10 @@ try:
       R_Motor.ChangeDutyCycle(0)
     elif swValues[2] == 1:
       print("SW3")
-      GPIO.output(AIN1,1)
-      GPIO.output(AIN2,0)
-      L_Motor.ChangeDutyCycle(50)
-      R_Motor.ChangeDutyCycle(0)
+      GPIO.output(BIN1,0)
+      GPIO.output(BIN2,1)
+      L_Motor.ChangeDutyCycle(0)
+      R_Motor.ChangeDutyCycle(50)
     elif swValues[3] == 1:
       print("SW4")
       GPIO.output(AIN1,1)

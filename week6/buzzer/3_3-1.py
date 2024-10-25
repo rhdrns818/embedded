@@ -14,7 +14,6 @@ try:
   while True:
     for i in range(len(sounds)):
       p.ChangeFrequency(sounds[i])
-      time.sleep(1.0)
 
 except KeyboardInterrupt:
   pass

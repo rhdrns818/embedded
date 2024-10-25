@@ -9,14 +9,12 @@ GPIO.setup(BUZZER,GPIO.OUT)
 
 p = GPIO.PWM(BUZZER,261)
 p.start(50)
-sounds = [330,394,262,394,330,330,330]
+sounds = [330,394,262,394,330,394,330]
 try:
   while True:
     for i in range(len(sounds)):
       p.ChangeFrequency(sounds[i])
       time.sleep(1.0)
-      p.stop()
-      time.sleep(0.2)
 
 except KeyboardInterrupt:
   pass

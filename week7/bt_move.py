@@ -57,10 +57,10 @@ def main():
         R_Motor.ChangeDutyCycle(50)
       elif gData.find("left") >= 0:
         gData = ""
-        GPIO.output(AIN1,1)
-        GPIO.output(AIN2,0)
-        L_Motor.ChangeDutyCycle(50)
-        R_Motor.ChangeDutyCycle(0)
+        GPIO.output(BIN1,0)
+        GPIO.output(BIN2,1)
+        L_Motor.ChangeDutyCycle(0)
+        R_Motor.ChangeDutyCycle(50)
       elif gData.find("right") >= 0:
         gData = ""
         GPIO.output(AIN1,0)
